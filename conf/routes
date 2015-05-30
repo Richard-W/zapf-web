@@ -2,3 +2,11 @@ GET	/webjars/*file				controllers.WebJarAssets.at(file)
 GET	/assets/*file				controllers.Assets.at(path="/public", file)
 
 GET	/					controllers.Application.index()
+
+GET	/about/allgemeines			controllers.Application.aboutAllgemeines()
+GET	/about/fachschaften			controllers.Application.aboutFachschaften()
+GET	/about/geschichte			controllers.Application.aboutGeschichte()
+
+GET	/stapf					controllers.Application.stapf()
+
+GET	/beschluesse				controllers.Application.beschluesse()

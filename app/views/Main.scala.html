@@ -22,20 +22,20 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><img alt="ZaPF" style="height: 100%;" title="ZaPF-Logo" src='@routes.Assets.at("images/logo.png")' /></a>
+			<a class="navbar-brand" href='@routes.Application.index()'><img alt="ZaPF" style="height: 100%;" title="ZaPF-Logo" src='@routes.Assets.at("images/logo.png")' /></a>
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Über die ZaPF <b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Allgemeines</a></li>
-						<li><a href="#">Fachschaften</a></li>
-						<li><a href="#">Geschichte</a></li>
+						<li><a href='@routes.Application.aboutAllgemeines()'>Allgemeines</a></li>
+						<li><a href='@routes.Application.aboutFachschaften()'>Fachschaften</a></li>
+						<li><a href='@routes.Application.aboutGeschichte()'>Geschichte</a></li>
 					</ul>
 				</li>
-				<li><a href="#">StAPF</a></li>
-				<li><a href="#">Beschlüsse</a></li>
+				<li><a href='@routes.Application.stapf()'>StAPF</a></li>
+				<li><a href='@routes.Application.beschluesse()'>Beschlüsse</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Vergangene ZaPFen <b class="caret"></b></a>
 					<ul class="dropdown-menu">
@@ -49,7 +49,7 @@
 						<li><a href="#">Weitere</a></li>
 					</ul>
 				</li>
-				<li><a href='http://www.fb1.uni-bremen.de/~zin/blog/' target="_blank">Nächste ZaPF</a></li>
+				<li><a href='http://zapf.uni.kn' target="_blank">Nächste ZaPF</a></li>
 			</ul>
 		</div>
 	</div>
