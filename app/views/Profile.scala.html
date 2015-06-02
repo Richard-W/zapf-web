@@ -1,8 +1,10 @@
 @()(implicit requestContext: RequestContext)
 
 @Main {
-<div class="container" ng-controller="ProfileCtrl">
-	<h1>Profil</h1>
+<div class="container">
+	<h1>Nutzereinstellungen</h1>
+
+	<h2>Account-Informationen</h2>
 	<form method="POST" action='@routes.Application.profilePost'>
 		<table class="table">
 			<tbody>
@@ -24,7 +26,30 @@
 				</tr>
 			</tbody>
 		</table>
+		<input type="hidden" name="section" value="account" />
 		<input type="submit" class="btn btn-primary" value="Ändern" />
+	</form>
+
+	<h2>Passwort ändern</h2>
+	<form method="POST" action='@routes.Application.profilePost'>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="pw1">Neues Passwort</label><br />
+				<input class="form-control" name="pw1" type="password" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="pw2">Passwort wiederholen</label><br />
+				<input class="form-control" name="pw2" type="password" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<input type="submit" class="btn btn-primary" />
+			</div>
+		</div>
+		<input type="hidden" name="section" value="cpw" />
 	</form>
 </div>
 }

@@ -91,6 +91,33 @@ BootstrapDialog.show({
 });
 </script>
 }
+@if(requestContext.success.isDefined) {
+<script>
+BootstrapDialog.show({
+	type: BootstrapDialog.TYPE_SUCCESS,
+	title: 'Erfolg!',
+	message: '@requestContext.success.get',
+});
+</script>
+}
+@if(requestContext.warning.isDefined) {
+<script>
+BootstrapDialog.show({
+	type: BootstrapDialog.TYPE_WARNING,
+	title: 'Warnung!',
+	message: '@requestContext.warning.get',
+});
+</script>
+}
+@if(requestContext.notice.isDefined) {
+<script>
+BootstrapDialog.show({
+	type: BootstrapDialog.TYPE_INFO,
+	title: 'Info!',
+	message: '@requestContext.notice.get',
+});
+</script>
+}
 
 </body>
 </html>
