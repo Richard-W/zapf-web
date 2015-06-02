@@ -34,6 +34,8 @@ object Application extends Controller {
     Redirect(routes.Application.index).withSession(request.session - "authedAs")
   }
 
+  def profile = TODO
+
   def aboutAllgemeines = Action.async { implicit request ⇒
     RequestContext() map { implicit requestContext ⇒
       Ok(views.html.about.Allgemeines())

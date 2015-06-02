@@ -4,6 +4,7 @@ GET	/assets/*file				controllers.Assets.at(path="/public", file)
 GET	/					controllers.Application.index()
 POST	/login					controllers.Application.login()
 GET	/logout					controllers.Application.logout()
+GET	/profile				controllers.Application.profile()
 
 GET	/about/allgemeines			controllers.Application.aboutAllgemeines()
 GET	/about/fachschaften			controllers.Application.aboutFachschaften()

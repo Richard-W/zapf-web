@@ -54,7 +54,7 @@
 			</ul>
 			@if(requestContext.user.isDefined) {
 			<ul class="nav navbar-nav navbar-right">
-				<li class="navbar-text">Eingeloggt als @requestContext.user.get.name</li>
+				<li><a href='@routes.Application.profile()'>Eingeloggt als @requestContext.user.get.name</a></li>
 				<li><a href="@routes.Application.logout()">Logout</a></li>
 			</ul>
 			} else {
