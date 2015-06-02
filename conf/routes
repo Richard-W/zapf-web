@@ -5,6 +5,7 @@ GET	/					controllers.Application.index()
 POST	/login					controllers.Application.login()
 GET	/logout					controllers.Application.logout()
 GET	/profile				controllers.Application.profile()
+POST	/profile				controllers.Application.profilePost()
 
 GET	/about/allgemeines			controllers.Application.aboutAllgemeines()
 GET	/about/fachschaften			controllers.Application.aboutFachschaften()

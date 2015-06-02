@@ -14,7 +14,18 @@ case class User(
   firstName: String,
   lastName: String,
   email: String
-)
+) {
+
+  def update: Future[Try[User]] = {
+    Mongo.collection("users").update(BSONDocument("name" -> name), User.bsonWriter.write(this)) map { lastError ⇒
+      if(lastError.ok) {
+        Success(this)
+      } else {
+        Failure(lastError)
+      }
+    }
+  }
+}
 
 object User {
 

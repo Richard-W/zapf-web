@@ -1,0 +1,30 @@
+@()(implicit requestContext: RequestContext)
+
+@Main {
+<div class="container" ng-controller="ProfileCtrl">
+	<h1>Profil</h1>
+	<form method="POST" action='@routes.Application.profilePost'>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>Nutzername</td>
+					<td>@requestContext.user.get.name</td>
+				</tr>
+				<tr>
+					<td>Vorname</td>
+					<td><input name="firstName" type="text" value='@requestContext.user.get.firstName' /></td>
+				</tr>
+				<tr>
+					<td>Nachname</td>
+					<td><input name="lastName" type="text" value='@requestContext.user.get.lastName' /></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input name="email" type="text" value='@requestContext.user.get.email' /></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" class="btn btn-primary" value="Ändern" />
+	</form>
+</div>
+}
