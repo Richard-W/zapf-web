@@ -10,7 +10,8 @@ libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play" % "2.4.0",
   "org.webjars" % "bootstrap" % "3.3.4",
   "xyz.wiedenhoeft" %% "scalacrypt" % "0.4-SNAPSHOT",
-  "org.reactivemongo" %% "reactivemongo" % "0.10.5.0.akka23"
+  "org.reactivemongo" %% "reactivemongo" % "0.10.5.0.akka23",
+  "org.webjars" % "angularjs" % "1.3.15"
 )
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
