@@ -12,7 +12,8 @@ case class User(
   name: String,
   pass: Either[PasswordHash, String],
   firstName: String,
-  lastName: String
+  lastName: String,
+  email: String
 )
 
 object User {
@@ -23,7 +24,8 @@ object User {
         bson.getAs[String]("name").get,
         Left(bson.getAs[PasswordHash]("pass").get),
         bson.getAs[String]("firstName").get,
-        bson.getAs[String]("lastName").get
+        bson.getAs[String]("lastName").get,
+        bson.getAs[String]("email").get
       )
     }
   }
@@ -34,7 +36,8 @@ object User {
         "name" -> user.name,
         "pass" -> user.pass.left.get,
         "firstName" -> user.firstName,
-        "lastName" -> user.lastName
+        "lastName" -> user.lastName,
+        "email" -> user.email
       )
     }
   }
@@ -48,7 +51,7 @@ object User {
 
     // Insert admin if it does not exist
     Play.current.configuration.getString("admin.initpass") match {
-      case Some(pass) ⇒ register(User("admin", Right(pass), "Admin", "Istrator")) map {
+      case Some(pass) ⇒ register(User("admin", Right(pass), "Admin", "Istrator", "root@localhost")) map {
         case Success(_) ⇒
         case Failure(f) ⇒ throw f
       }
