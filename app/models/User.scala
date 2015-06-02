@@ -13,7 +13,8 @@ case class User(
   pass: Either[PasswordHash, String],
   firstName: String,
   lastName: String,
-  email: String
+  email: String,
+  university: String
 ) {
 
   def update: Future[Try[User]] = {
@@ -36,7 +37,8 @@ object User {
         Left(bson.getAs[PasswordHash]("pass").get),
         bson.getAs[String]("firstName").get,
         bson.getAs[String]("lastName").get,
-        bson.getAs[String]("email").get
+        bson.getAs[String]("email").get,
+        bson.getAs[String]("university").get
       )
     }
   }
@@ -48,7 +50,8 @@ object User {
         "pass" -> user.pass.left.get,
         "firstName" -> user.firstName,
         "lastName" -> user.lastName,
-        "email" -> user.email
+        "email" -> user.email,
+        "university" -> user.university
       )
     }
   }
@@ -62,7 +65,7 @@ object User {
 
     // Insert admin if it does not exist
     Play.current.configuration.getString("admin.initpass") match {
-      case Some(pass) ⇒ register(User("admin", Right(pass), "Admin", "Istrator", "root@localhost")) map {
+      case Some(pass) ⇒ register(User("admin", Right(pass), "Admin", "Istrator", "root@localhost", "Administrations Uni")) map {
         case Success(_) ⇒
         case Failure(f) ⇒ throw f
       }

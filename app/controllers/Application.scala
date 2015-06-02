@@ -59,7 +59,8 @@ object Application extends Controller {
             requestContext.user.get.copy(
               firstName = map("firstName")(0),
               lastName = map("lastName")(0),
-              email = map("email")(0)
+              email = map("email")(0),
+              university = map("university")(0)
             ).update map { _ ⇒
               Redirect(routes.Application.profile).flashing("success" -> "Accountinformationen aktualisiert.")
             }
