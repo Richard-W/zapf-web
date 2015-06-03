@@ -61,15 +61,9 @@
 				<li><a href="@routes.Account.logout()">Logout</a></li>
 			</ul>
 			} else {
-			<form class="navbar-form navbar-right" method="POST" action='@routes.Account.login()'>
-                    		<div class="form-group">
-                        		<input type="text" class="form-control logininput" name="username" placeholder="Username" />
-                    		</div>
-                    		<div class="form-group">
-                        		<input type="password" class="form-control logininput" name="password" placeholder="Passwort" />
-                    		</div>
-				<input type="submit" class="btn btn-primary loginbutton" value="Einloggen" />
-                	</form>
+			<ul class="navbar-form navbar-right">
+				<li><a class="btn btn-primary loginbutton" data-toggle="modal" href="#loginModal" >Login</a></li>
+			</ul>
 			}
 		</div>
 	</div>
@@ -79,6 +73,39 @@
 <script src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))'></script>
 <script src='@routes.Assets.at("javascripts/bootstrap-dialog.min.js")'></script>
 <script src='@routes.Assets.at("javascripts/application.js")'></script>
+
+<div id="loginModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Login</h4>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action='@routes.Account.login()'>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<input type="text" class="form-control" name="username" placeholder="Username" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<input type="password" class="form-control" name="password" placeholder="Passwort" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<input type="submit" class="form-control btn btn-primary" value="Einloggen" />
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a href='@routes.Account.register'>Registrieren</a>
+			</div>
+		</div>
+	</div>
+</div>
 
 @content
 
