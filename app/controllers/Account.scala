@@ -1,6 +1,7 @@
 package controllers
 
 import play.api.mvc._
+import play.api.Play
 import models._
 import scala.concurrent.Future
 import play.api.libs.concurrent.Execution.Implicits._
@@ -129,11 +130,26 @@ class Account @Inject()(mailerClient: MailerClient) extends Controller {
 
         User.register(user) map {
           case Success(user) ⇒
+            val conf = Play.current.configuration
+            val baseUri = conf.getString("app.baseUri").get
+            val link = baseUri + "/activate/" + user.name + "/" + user.activationSecret
+            val username = user.name
             val email = Email(
               "Aktivierung ZaPF-Account",
-              "noreply@example.org",
+              conf.getString("app.email").get,
               Seq(user.email),
-              bodyText = Some("https://localhost:9000/activate/"+user.name+"/"+user.activationSecret)
+              bodyText = Some(
+                s"""
+                  |Hi,
+                  |
+                  |Um deinen Account $username zu aktivieren, musst du den folgenden Link klicken:
+                  |
+                  |$link
+                  |
+                  |Grüße,
+                  |Der ToPF
+                """.stripMargin
+              )
             )
             mailerClient.send(email)
             Redirect(routes.Application.index).flashing("notice" ->
