@@ -1,0 +1,56 @@
+@()(implicit requestContext: RequestContext)
+
+@Main {
+<div class="container">
+	<h1>Registrieren</h1>
+	<form method="POST" action='@routes.Account.registerPost()'>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="name">Nutzername</label><br />
+				<input class="form-control" name="name" type="text" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="email">Email</label><br />
+				<input class="form-control" name="email" type="text" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="firstname">Vorname</label><br />
+				<input class="form-control" name="firstname" type="text" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="lastname">Nachname</label><br />
+				<input class="form-control" name="lastname" type="text" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="university">Universität</label><br />
+				<input class="form-control" name="university" type="text" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="pw1">Passwort</label><br />
+				<input class="form-control" name="pw1" type="password" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<label for="pw2">Passwort wiederholen</label><br />
+				<input class="form-control" name="pw2" type="password" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-4">
+				<input class="form-control btn btn-primary" value="Registrieren" type="submit" />
+			</div>
+		</div>
+	</form>
+</div>
+}

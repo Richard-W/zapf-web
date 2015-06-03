@@ -3,10 +3,13 @@ GET	/assets/*file				controllers.Assets.at(path="/public", file)
 
 GET	/					controllers.Application.index()
 
-POST	/login					controllers.Account.login()
-GET	/logout					controllers.Account.logout()
-GET	/profile				controllers.Account.profile()
-POST	/profile				controllers.Account.profilePost()
+POST	/login					@controllers.Account.login()
+GET	/logout					@controllers.Account.logout()
+GET	/profile				@controllers.Account.profile()
+POST	/profile				@controllers.Account.profilePost()
+GET	/register				@controllers.Account.register()
+POST	/register				@controllers.Account.registerPost()
+GET	/activate/:user/:key			@controllers.Account.activate(user, key)
 
 GET	/about/allgemeines			controllers.Application.aboutAllgemeines()
 GET	/about/fachschaften			controllers.Application.aboutFachschaften()
