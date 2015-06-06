@@ -4,8 +4,10 @@ import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits._
 import scala.concurrent.Future
 import models._
+import play.modules.authenticator._
+import javax.inject._
 
-object Application extends ExtendedController {
+class Application @Inject()(implicit val auth: Authenticator) extends ExtendedController {
 
   def index = contextAction1 { implicit requestContext ⇒
     Ok(views.html.Index())

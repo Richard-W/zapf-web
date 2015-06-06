@@ -2,12 +2,15 @@ package controllers
 
 import play.api.mvc._
 import play.api.libs.concurrent.Execution.Implicits._
+import play.modules.authenticator._
 
 import scala.concurrent.Future
 
 import models._
 
-class ExtendedController extends Controller {
+abstract class ExtendedController extends Controller {
+
+  implicit val auth: Authenticator
 
   def contextAction2(block: (Request[AnyContent]) ⇒ (RequestContext) ⇒ Result): Action[AnyContent] = {
     Action.async { implicit request ⇒

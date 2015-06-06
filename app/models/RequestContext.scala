@@ -2,10 +2,11 @@ package models
 
 import scala.concurrent.Future
 import play.api.libs.concurrent.Execution.Implicits._
-import play.api.mvc.Request
+import play.api.mvc._
+import play.modules.authenticator._
 
 case class RequestContext(
-  user: Option[User],
+  principal: Option[Principal],
   success: Option[String],
   error: Option[String],
   warning: Option[String],
@@ -14,15 +15,10 @@ case class RequestContext(
 
 object RequestContext {
 
-  def apply()(implicit request: Request[Any]): Future[RequestContext] = {
-    val futureUser: Future[Option[User]] = request.session.get("authedAs") match {
-      case Some(username) ⇒ User.findByName(username)
-      case None ⇒ Future.successful(None)
-    }
-
-    futureUser map { user ⇒
+  def apply()(implicit auth: Authenticator, request: Request[AnyContent]): Future[RequestContext] = {
+    auth.principal map { principal ⇒
       RequestContext(
-        user,
+        principal,
         request.flash.get("success"),
         request.flash.get("error"),
         request.flash.get("warning"),

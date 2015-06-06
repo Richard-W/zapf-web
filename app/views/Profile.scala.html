@@ -10,23 +10,23 @@
 			<tbody>
 				<tr>
 					<td>Nutzername</td>
-					<td>@requestContext.user.get.name</td>
+					<td>@requestContext.principal.get.name</td>
 				</tr>
 				<tr>
 					<td>Vorname</td>
-					<td><input name="firstName" type="text" value='@requestContext.user.get.firstName' /></td>
+					<td><input name="firstName" type="text" value='@requestContext.principal.get.field("firstName").getOrElse("")' /></td>
 				</tr>
 				<tr>
 					<td>Nachname</td>
-					<td><input name="lastName" type="text" value='@requestContext.user.get.lastName' /></td>
+					<td><input name="lastName" type="text" value='@requestContext.principal.get.field("lastName").getOrElse("")' /></td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td>@requestContext.user.get.email</td>
+					<td>@requestContext.principal.get.field("email").getOrElse("")</td>
 				</tr>
 				<tr>
 					<td>Universität</td>
-					<td><input name="university" type="text" value='@requestContext.user.get.university' /></td>
+					<td><input name="university" type="text" value='@requestContext.principal.get.field("university").getOrElse("")' /></td>
 				</tr>
 			</tbody>
 		</table>
